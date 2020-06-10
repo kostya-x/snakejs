@@ -73,8 +73,20 @@ function getNewPosition(min, max) {
 }
 
 function createApple() {
+  let appleSize = (gridSize - 1) / 2;
+
   context.fillStyle = "red";
-  context.fillRect(apple.x, apple.y, gridSize - 1, gridSize - 1);
+  context.beginPath();
+  context.arc(
+    apple.x + gridSize / 2,
+    apple.y + gridSize / 2,
+    appleSize,
+    0,
+    2 * Math.PI,
+    false
+  );
+  context.fill();
+  context.closePath();
 }
 
 function checkAppleCollision(x, y) {
@@ -98,7 +110,18 @@ function createSnake() {
   context.fillStyle = "green";
 
   snake.bodyPosition.forEach(function (cell, index) {
-    context.fillRect(cell.x, cell.y, gridSize - 1, gridSize - 1);
+    let bodySize = (gridSize - 1) / 2;
+    context.beginPath();
+    context.arc(
+      cell.x + gridSize / 2,
+      cell.y + gridSize / 2,
+      bodySize,
+      0,
+      2 * Math.PI,
+      false
+    );
+    context.fill();
+    context.closePath();
 
     checkAppleCollision(cell.x, cell.y);
 
