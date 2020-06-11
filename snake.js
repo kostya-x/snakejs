@@ -25,6 +25,17 @@ function clearField() {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function skipFrame() {
+  if (++frame < 4) {
+    console.log(frame);
+    return gameLoop();
+  }
+
+  frame = 0;
+
+  return;
+}
+
 function moveSnake() {
   snake.x += snake.dx;
   snake.y += snake.dy;
@@ -64,7 +75,7 @@ function getNewPosition(min, max) {
 function createApple() {
   let appleSize = (gridSize - 1) / 2;
 
-  context.fillStyle = "red";
+  context.fillStyle = "#f06292";
   context.beginPath();
   context.arc(
     apple.x + gridSize / 2,
@@ -96,7 +107,7 @@ function checkBodyCollision(x, y, index) {
 }
 
 function createSnake() {
-  context.fillStyle = "green";
+  context.fillStyle = "#76ff03";
 
   snake.bodyPosition.forEach(function (cell, index) {
     let bodySize = (gridSize - 1) / 2;
