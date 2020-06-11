@@ -95,9 +95,26 @@ function addScore() {
   game__score.textContent = +game__score.textContent + 1;
 }
 
+function cleareScore() {
+  let game__score = document.querySelector(".game__score");
+
+  game__score.textContent = "0";
+}
+
+function addBestScore() {
+  let game__bestScore = document.querySelector(".game__best-score");
+  console.log("chenge best score");
+  game__bestScore.textContent = +game__bestScore.textContent + 1;
+
+  if (+game__bestScore.textContent > 0) {
+    game__bestScore.style.visibility = "visible";
+  }
+}
+
 function checkAppleCollision(x, y) {
   if (x === apple.x && y === apple.y) {
     snake.bodyPositionLenght++;
+
     addScore();
 
     moveApple();
@@ -107,6 +124,8 @@ function checkAppleCollision(x, y) {
 function checkBodyCollision(x, y, index) {
   for (let i = index + 1; i < snake.bodyPosition.length; i++) {
     if (x === snake.bodyPosition[i].x && y === snake.bodyPosition[i].y) {
+      addBestScore();
+      cleareScore();
       setSnake();
       moveApple();
     }

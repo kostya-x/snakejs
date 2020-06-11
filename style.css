@@ -14,12 +14,14 @@
 }
 
 .game__interface {
-  display: flex;
-  justify-content: space-between;
+  color: white;
 }
 
 .game__score {
-  color: white;
+}
+
+.game__best-score {
+  visibility: hidden;
 }
 
 canvas {
