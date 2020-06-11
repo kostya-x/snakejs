@@ -107,9 +107,12 @@ function checkBodyCollision(x, y, index) {
 }
 
 function createSnake() {
-  context.fillStyle = "#76ff03";
-
   snake.bodyPosition.forEach(function (cell, index) {
+    if (index === 0) {
+      context.fillStyle = "white";
+    } else {
+      context.fillStyle = "#76ff03";
+    }
     let bodySize = (gridSize - 1) / 2;
     context.beginPath();
     context.arc(
