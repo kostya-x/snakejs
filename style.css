@@ -31,3 +31,210 @@
 canvas {
   border: 1px solid white;
 }
+
+.play-button {
+  position: absolute;
+  height: 50px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 33px;
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  animation: button 0.9s linear infinite;
+}
+
+.play-button:before {
+  z-index: -9999;
+  content: "";
+  position: absolute;
+  display: block;
+  width: 80%;
+  height: 70%;
+  top: 15%;
+  left: 10%;
+  filter: blur(15px);
+  opacity: 0;
+  transition: 0.3s opacity ease-in-out;
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+}
+
+.play-button:hover:before {
+  z-index: -9999;
+  opacity: 1;
+  transition: 0.3s opacity ease-in-out;
+  filter: blur(25px);
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  animation: button 0.9s linear infinite;
+}
+
+.play-button__text {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 4px;
+  text-align: center;
+  color: white;
+  background: #222;
+}
+
+@keyframes button {
+  0% {
+    background: linear-gradient(
+      45deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82
+    );
+  }
+  11% {
+    background: linear-gradient(
+      90deg,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533
+    );
+  }
+  22% {
+    background: linear-gradient(
+      135deg,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055
+    );
+  }
+  33% {
+    background: linear-gradient(
+      180deg,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b
+    );
+  }
+  44% {
+    background: linear-gradient(
+      225deg,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab
+    );
+  }
+  55% {
+    background: linear-gradient(
+      270deg,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8
+    );
+  }
+  66% {
+    background: linear-gradient(
+      315deg,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad
+    );
+  }
+  77% {
+    background: linear-gradient(
+      360deg,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad
+    );
+  }
+  88% {
+    background: linear-gradient(
+      0deg,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b
+    );
+  }
+  100% {
+    background: linear-gradient(
+      0deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82
+    );
+  }
+}

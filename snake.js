@@ -1,4 +1,5 @@
 let canvas = document.querySelector(".game-canvas");
+let playButton = document.querySelector(".play-button");
 let context = canvas.getContext("2d");
 let gridSize = 16;
 let frame = 0;
@@ -179,6 +180,11 @@ function gameLoop() {
   createSnake();
 }
 
+function startGame() {
+  setSnake();
+  gameLoop();
+}
+
 document.addEventListener("keydown", function (e) {
   if (e.which === 37 && snake.dx === 0) {
     snake.dx = -gridSize;
@@ -195,9 +201,7 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-function startGame() {
-  setSnake();
-  gameLoop();
-}
-
-startGame();
+playButton.addEventListener("click", () => {
+  playButton.style.visibility = "hidden";
+  startGame();
+});
