@@ -90,25 +90,26 @@ function createApple() {
 }
 
 function addScore() {
-  let game__score = document.querySelector(".game__score");
+  let game__scoreText = document.querySelector(".game__score-text");
 
-  game__score.textContent = +game__score.textContent + 1;
+  game__scoreText.textContent = +game__scoreText.textContent + 1;
 }
 
 function cleareScore() {
-  let game__score = document.querySelector(".game__score");
+  let game__scoreText = document.querySelector(".game__score-text");
 
-  game__score.textContent = "0";
+  game__scoreText.textContent = "0";
 }
 
 function addBestScore() {
-  let game__score = document.querySelector(".game__score");
-  let game__bestScore = document.querySelector(".game__best-score");
-  console.log("chenge best score");
-  game__bestScore.textContent =
-    +game__bestScore.textContent + +game__score.textContent;
+  let game__scoreText = document.querySelector(".game__score-text");
+  let game__bestScoreText = document.querySelector(".game__best-score-text");
 
-  if (+game__bestScore.textContent > 0) {
+  game__bestScoreText.textContent =
+    +game__bestScoreText.textContent + +game__scoreText.textContent;
+
+  if (+game__bestScoreText.textContent > 0) {
+    let game__bestScore = document.querySelector(".game__best-score");
     game__bestScore.style.visibility = "visible";
   }
 }
