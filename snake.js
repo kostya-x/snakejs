@@ -102,9 +102,11 @@ function cleareScore() {
 }
 
 function addBestScore() {
+  let game__score = document.querySelector(".game__score");
   let game__bestScore = document.querySelector(".game__best-score");
   console.log("chenge best score");
-  game__bestScore.textContent = +game__bestScore.textContent + 1;
+  game__bestScore.textContent =
+    +game__bestScore.textContent + +game__score.textContent;
 
   if (+game__bestScore.textContent > 0) {
     game__bestScore.style.visibility = "visible";
