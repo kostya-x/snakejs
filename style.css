@@ -9,7 +9,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background-color: #000;
+}
+
+.game__interface {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game__score {
+  color: white;
 }
 
 canvas {

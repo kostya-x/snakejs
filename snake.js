@@ -89,9 +89,16 @@ function createApple() {
   context.closePath();
 }
 
+function addScore() {
+  let game__score = document.querySelector(".game__score");
+
+  game__score.textContent = +game__score.textContent + 1;
+}
+
 function checkAppleCollision(x, y) {
   if (x === apple.x && y === apple.y) {
     snake.bodyPositionLenght++;
+    addScore();
 
     moveApple();
   }
