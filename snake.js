@@ -16,9 +16,14 @@ function setSnake() {
   snake.x = 160;
   snake.y = 160;
   snake.bodyPosition = [];
+  snake.bodyColor = [];
   snake.bodyPositionLenght = 4;
   snake.dx = gridSize;
   snake.dy = 0;
+
+  for (let i = 0; i < snake.bodyPositionLenght; i++) {
+    snake.bodyColor.push(generateColor());
+  }
 
   return snake;
 }
@@ -74,7 +79,7 @@ function getNewPosition(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateAppleColor() {
+function generateColor() {
   let colors = [
     "ffff00",
     "76ff03",
@@ -85,7 +90,7 @@ function generateAppleColor() {
     "673ab7"
   ];
 
-  apple.color = colors[Math.floor(Math.random() * colors.length)];
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 
 function createApple() {
@@ -135,7 +140,8 @@ function checkAppleCollision(x, y) {
 
     addScore();
 
-    generateAppleColor();
+    snake.bodyColor.push(apple.color);
+    apple.color = generateColor();
 
     moveApple();
   }
@@ -157,7 +163,7 @@ function createSnake() {
     if (index === 0) {
       context.fillStyle = "white";
     } else {
-      context.fillStyle = "#76ff03";
+      context.fillStyle = `#${snake.bodyColor[index]}`;
     }
     let bodySize = (gridSize - 1) / 2;
     context.beginPath();
@@ -198,7 +204,7 @@ function gameLoop() {
 
 function startGame() {
   setSnake();
-  generateAppleColor();
+  apple.color = generateColor();
   gameLoop();
 }
 
