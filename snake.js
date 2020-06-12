@@ -8,9 +8,9 @@ let snake = {};
 
 let apple = {
   x: 320,
-  y: 320
+  y: 320,
+  color: null
 };
-let appleColor;
 
 function setSnake() {
   snake.x = 160;
@@ -85,13 +85,13 @@ function generateAppleColor() {
     "673ab7"
   ];
 
-  appleColor = colors[Math.floor(Math.random() * colors.length)];
+  apple.color = colors[Math.floor(Math.random() * colors.length)];
 }
 
 function createApple() {
   let appleSize = (gridSize - 1) / 2;
 
-  context.fillStyle = `#${appleColor}`;
+  context.fillStyle = `#${apple.color}`;
   context.beginPath();
   context.arc(
     apple.x + gridSize / 2,
