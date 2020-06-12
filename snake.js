@@ -106,11 +106,10 @@ function addBestScore() {
   let game__scoreText = document.querySelector(".game__score-text");
   let game__bestScoreText = document.querySelector(".game__best-score-text");
 
-  game__bestScoreText.textContent =
-    +game__bestScoreText.textContent + +game__scoreText.textContent;
-
-  if (+game__bestScoreText.textContent > 0) {
+  if (+game__scoreText.textContent > +game__bestScoreText.textContent) {
     let game__bestScore = document.querySelector(".game__best-score");
+
+    game__bestScoreText.textContent = +game__scoreText.textContent;
     game__bestScore.style.visibility = "visible";
   }
 }
