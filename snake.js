@@ -10,6 +10,7 @@ let apple = {
   x: 320,
   y: 320
 };
+let appleColor;
 
 function setSnake() {
   snake.x = 160;
@@ -73,10 +74,24 @@ function getNewPosition(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function generateAppleColor() {
+  let colors = [
+    "ffff00",
+    "76ff03",
+    "f06292",
+    "4fc3f7",
+    "ba68c8",
+    "f57c00",
+    "673ab7"
+  ];
+
+  appleColor = colors[Math.floor(Math.random() * colors.length)];
+}
+
 function createApple() {
   let appleSize = (gridSize - 1) / 2;
 
-  context.fillStyle = "#f06292";
+  context.fillStyle = `#${appleColor}`;
   context.beginPath();
   context.arc(
     apple.x + gridSize / 2,
@@ -119,6 +134,8 @@ function checkAppleCollision(x, y) {
     snake.bodyPositionLenght++;
 
     addScore();
+
+    generateAppleColor();
 
     moveApple();
   }
@@ -172,15 +189,16 @@ function gameLoop() {
 
   clearField();
 
-  moveSnake();
-
   createApple();
+
+  moveSnake();
 
   createSnake();
 }
 
 function startGame() {
   setSnake();
+  generateAppleColor();
   gameLoop();
 }
 
