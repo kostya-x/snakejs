@@ -71,9 +71,6 @@
   color: white;
 }
 
-.game__score {
-}
-
 .game__best-score {
   visibility: hidden;
 }
@@ -109,7 +106,6 @@ canvas {
   z-index: -999;
   content: "";
   position: absolute;
-  display: block;
   width: 80%;
   height: 70%;
   top: 15%;
