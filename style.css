@@ -11,7 +11,57 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #000;
+  background: repeating-linear-gradient(
+      45deg,
+      #2b2b2b 0%,
+      #2b2b2b 10%,
+      #222222 0%,
+      #222222 50%
+    )
+    0 / 15px 15px;
+}
+
+.game__title {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 50px;
+}
+
+.game__title-snake {
+  font-family: "Pacifico", cursive;
+  font-size: 48px;
+  letter-spacing: 3px;
+  color: #fff;
+  transition: all 0.5s;
+  animation: neon-snake 1.5s ease-in-out infinite alternate;
+}
+
+.game__title-snake:hover {
+  color: #07b342;
+  animation: none;
+}
+
+@keyframes neon-snake {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #07b342,
+      0 0 70px #07b342, 0 0 80px #07b342, 0 0 100px #07b342, 0 0 150px #07b342;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #07b342,
+      0 0 35px #07b342, 0 0 40px #07b342, 0 0 50px #07b342, 0 0 75px #07b342;
+  }
+}
+
+.game__title-game {
+  position: absolute;
+  top: 42px;
+  right: -80px;
+  display: inline-block;
+  transform: rotate(16deg);
+  font-family: "Press Start 2P", sans-serif;
+  color: #ffdd1b;
+  letter-spacing: 5px;
 }
 
 .game__interface {
@@ -29,10 +79,13 @@
 }
 
 canvas {
+  z-index: 1;
   border: 1px solid white;
+  background-color: #222;
 }
 
 .play-button {
+  z-index: 999;
   position: absolute;
   height: 50px;
   padding: 5px;
@@ -53,7 +106,7 @@ canvas {
 }
 
 .play-button:before {
-  z-index: -9999;
+  z-index: -999;
   content: "";
   position: absolute;
   display: block;
