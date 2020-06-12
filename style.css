@@ -11,7 +11,57 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #000;
+  background: repeating-linear-gradient(
+      45deg,
+      #2b2b2b 0%,
+      #2b2b2b 10%,
+      #222222 0%,
+      #222222 50%
+    )
+    0 / 15px 15px;
+}
+
+.game__title {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 50px;
+}
+
+.game__title-snake {
+  font-family: "Pacifico", cursive;
+  font-size: 48px;
+  letter-spacing: 3px;
+  color: #fff;
+  transition: all 0.5s;
+  animation: neon-snake 1.5s ease-in-out infinite alternate;
+}
+
+.game__title-snake:hover {
+  color: #07b342;
+  animation: none;
+}
+
+@keyframes neon-snake {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #07b342,
+      0 0 70px #07b342, 0 0 80px #07b342, 0 0 100px #07b342, 0 0 150px #07b342;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #07b342,
+      0 0 35px #07b342, 0 0 40px #07b342, 0 0 50px #07b342, 0 0 75px #07b342;
+  }
+}
+
+.game__title-game {
+  position: absolute;
+  top: 42px;
+  right: -80px;
+  display: inline-block;
+  transform: rotate(16deg);
+  font-family: "Press Start 2P", sans-serif;
+  color: #ffdd1b;
+  letter-spacing: 5px;
 }
 
 .game__interface {
@@ -29,5 +79,215 @@
 }
 
 canvas {
+  z-index: 1;
   border: 1px solid white;
+  background-color: #222;
+}
+
+.play-button {
+  z-index: 999;
+  position: absolute;
+  height: 50px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 33px;
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  animation: button 0.9s linear infinite;
+}
+
+.play-button:before {
+  z-index: -999;
+  content: "";
+  position: absolute;
+  display: block;
+  width: 80%;
+  height: 70%;
+  top: 15%;
+  left: 10%;
+  filter: blur(15px);
+  opacity: 0;
+  transition: 0.3s opacity ease-in-out;
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+}
+
+.play-button:hover:before {
+  z-index: -9999;
+  opacity: 1;
+  transition: 0.3s opacity ease-in-out;
+  filter: blur(25px);
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  animation: button 0.9s linear infinite;
+}
+
+.play-button__text {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 4px;
+  text-align: center;
+  color: white;
+  background: #222;
+}
+
+@keyframes button {
+  0% {
+    background: linear-gradient(
+      45deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82
+    );
+  }
+  11% {
+    background: linear-gradient(
+      90deg,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533
+    );
+  }
+  22% {
+    background: linear-gradient(
+      135deg,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055
+    );
+  }
+  33% {
+    background: linear-gradient(
+      180deg,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b
+    );
+  }
+  44% {
+    background: linear-gradient(
+      225deg,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab
+    );
+  }
+  55% {
+    background: linear-gradient(
+      270deg,
+      #1098ad,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8
+    );
+  }
+  66% {
+    background: linear-gradient(
+      315deg,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad
+    );
+  }
+  77% {
+    background: linear-gradient(
+      360deg,
+      #07b39b,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad
+    );
+  }
+  88% {
+    background: linear-gradient(
+      0deg,
+      #6fba82,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b
+    );
+  }
+  100% {
+    background: linear-gradient(
+      0deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82
+    );
+  }
 }

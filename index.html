@@ -4,9 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake Game</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="game__body">
+    <h1 class="game__title">
+      <span class="game__title-snake">SNAKE</span>
+      <span class="game__title-game">GAME</span>
+    </h1>
     <div class="game__interface">
       <p class="game__score">Score: <span class="game__score-text">0</span></p>
       <p class="game__best-score">
@@ -16,6 +32,9 @@
     <canvas class="game-canvas" width="400" height="400">
       Your browser does not support HTML5 Canvas.
     </canvas>
+    <div class="play-button">
+      <div class="play-button__text">START GAME</div>
+    </div>
     <script src="snake.js"></script>
   </body>
 </html>

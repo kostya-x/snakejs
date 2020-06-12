@@ -1,4 +1,5 @@
 let canvas = document.querySelector(".game-canvas");
+let playButton = document.querySelector(".play-button");
 let context = canvas.getContext("2d");
 let gridSize = 16;
 let frame = 0;
@@ -7,7 +8,8 @@ let snake = {};
 
 let apple = {
   x: 320,
-  y: 320
+  y: 320,
+  color: null
 };
 
 function setSnake() {
@@ -72,10 +74,24 @@ function getNewPosition(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function generateAppleColor() {
+  let colors = [
+    "ffff00",
+    "76ff03",
+    "f06292",
+    "4fc3f7",
+    "ba68c8",
+    "f57c00",
+    "673ab7"
+  ];
+
+  apple.color = colors[Math.floor(Math.random() * colors.length)];
+}
+
 function createApple() {
   let appleSize = (gridSize - 1) / 2;
 
-  context.fillStyle = "#f06292";
+  context.fillStyle = `#${apple.color}`;
   context.beginPath();
   context.arc(
     apple.x + gridSize / 2,
@@ -105,11 +121,10 @@ function addBestScore() {
   let game__scoreText = document.querySelector(".game__score-text");
   let game__bestScoreText = document.querySelector(".game__best-score-text");
 
-  game__bestScoreText.textContent =
-    +game__bestScoreText.textContent + +game__scoreText.textContent;
-
-  if (+game__bestScoreText.textContent > 0) {
+  if (+game__scoreText.textContent > +game__bestScoreText.textContent) {
     let game__bestScore = document.querySelector(".game__best-score");
+
+    game__bestScoreText.textContent = +game__scoreText.textContent;
     game__bestScore.style.visibility = "visible";
   }
 }
@@ -119,6 +134,8 @@ function checkAppleCollision(x, y) {
     snake.bodyPositionLenght++;
 
     addScore();
+
+    generateAppleColor();
 
     moveApple();
   }
@@ -172,11 +189,17 @@ function gameLoop() {
 
   clearField();
 
-  moveSnake();
-
   createApple();
 
+  moveSnake();
+
   createSnake();
+}
+
+function startGame() {
+  setSnake();
+  generateAppleColor();
+  gameLoop();
 }
 
 document.addEventListener("keydown", function (e) {
@@ -195,9 +218,7 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-function startGame() {
-  setSnake();
-  gameLoop();
-}
-
-startGame();
+playButton.addEventListener("click", () => {
+  playButton.style.visibility = "hidden";
+  startGame();
+});
