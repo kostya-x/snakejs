@@ -147,11 +147,14 @@ function checkAppleCollision(x, y) {
   }
 }
 
+function showResult() {}
+
 function checkBodyCollision(x, y, index) {
   for (let i = index + 1; i < snake.bodyPosition.length; i++) {
     if (x === snake.bodyPosition[i].x && y === snake.bodyPosition[i].y) {
       addBestScore();
       cleareScore();
+      showResult();
       setSnake();
       moveApple();
     }

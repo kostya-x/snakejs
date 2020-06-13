@@ -75,7 +75,7 @@
   visibility: hidden;
 }
 
-canvas {
+.game-canvas {
   z-index: 1;
   border: 1px solid white;
   background-color: #222;
