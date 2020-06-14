@@ -345,6 +345,7 @@
   background: #222;
   border: none;
   animation: textColor 10s ease infinite;
+  cursor: pointer;
 }
 
 @keyframes textColor {
