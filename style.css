@@ -287,3 +287,96 @@
     );
   }
 }
+
+.result-message {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  text-align: center;
+}
+
+.result-message:after {
+  position: absolute;
+  content: "";
+  top: 5vw;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.75);
+  filter: blur(5vw);
+  background: linear-gradient(
+    45deg,
+    #f57c00,
+    #ffff00,
+    #76ff03,
+    #4fc3f7,
+    #673ab7,
+    #ba68c8,
+    #f06292
+  );
+  background-size: 200% 200%;
+  animation: animateGlow 10s ease infinite;
+}
+
+.result-message__content {
+  padding-bottom: 40px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #1c1b1b;
+}
+
+.play-again-button {
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 4px;
+  color: white;
+  background: #222;
+  border: none;
+  animation: textColor 10s ease infinite;
+}
+
+@keyframes textColor {
+  0% {
+    background-color: #f57c00;
+  }
+  16.5% {
+    background-color: #ffff00;
+  }
+  33% {
+    background-color: #76ff03;
+  }
+  49.5% {
+    background-color: #4fc3f7;
+  }
+  66% {
+    background-color: #673ab7;
+  }
+  82.5% {
+    background-color: #ba68c8;
+  }
+  100% {
+    background-color: #f06292;
+  }
+}
+
+@keyframes animateGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -12,6 +12,8 @@ let apple = {
   color: null
 };
 
+let pause = false;
+
 function setSnake() {
   snake.x = 160;
   snake.y = 160;
@@ -147,16 +149,45 @@ function checkAppleCollision(x, y) {
   }
 }
 
-function showResult() {}
+function showResultMessage() {
+  const resultMessage = document.createElement("div");
+  resultMessage.classList.add("result-message");
+
+  let game__scoreText = document.querySelector(".game__score-text");
+  resultMessage.innerHTML = `
+    <div class="result-message__content">
+      <div class="result-message__content-wrapper">
+        <p class="result-message__score">Your Score: ${game__scoreText.textContent}</p>
+        <button class="play-again-button">PLAY AGAIN</button>
+      </div>
+    </div>
+  `;
+
+  const gameBody = document.querySelector(".game__body");
+  gameBody.appendChild(resultMessage);
+
+  let playGainButton = document.querySelector(".play-again-button");
+  playGainButton.addEventListener("click", () => {
+    resultMessage.remove();
+    playAgain();
+  });
+}
+
+function playAgain() {
+  cleareScore();
+
+  pause = false;
+
+  setSnake();
+  moveApple();
+}
 
 function checkBodyCollision(x, y, index) {
   for (let i = index + 1; i < snake.bodyPosition.length; i++) {
     if (x === snake.bodyPosition[i].x && y === snake.bodyPosition[i].y) {
+      pause = true;
+      showResultMessage();
       addBestScore();
-      cleareScore();
-      showResult();
-      setSnake();
-      moveApple();
     }
   }
 }
@@ -189,6 +220,10 @@ function createSnake() {
 
 function gameLoop() {
   requestAnimationFrame(gameLoop);
+
+  if (pause) {
+    return;
+  }
 
   if (++frame < 8) {
     return;
