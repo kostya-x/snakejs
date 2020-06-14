@@ -263,6 +263,7 @@ document.addEventListener("keydown", function (e) {
 });
 
 playButton.addEventListener("click", () => {
-  playButton.style.visibility = "hidden";
+  let gameMenu = document.querySelector(".game__menu");
+  gameMenu.style.display = "none";
   startGame();
 });
