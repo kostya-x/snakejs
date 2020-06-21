@@ -1,5 +1,5 @@
 # snakejs
-![]https://kostya-x.github.io/images/projects/snake-game-screenshot-1.png
+![](https://kostya-x.github.io/images/projects/snake-game-screenshot-1.png)
 A classic snake created with js and canvas.
 There is also a css glow animation.
 
