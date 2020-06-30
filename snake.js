@@ -34,17 +34,6 @@ function clearField() {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function skipFrame() {
-  if (++frame < 4) {
-    console.log(frame);
-    return gameLoop();
-  }
-
-  frame = 0;
-
-  return;
-}
-
 function moveSnake() {
   snake.x += snake.dx;
   snake.y += snake.dy;
@@ -225,7 +214,7 @@ function gameLoop() {
     return;
   }
 
-  if (++frame < 8) {
+  if (++frame < 4) {
     return;
   }
 
