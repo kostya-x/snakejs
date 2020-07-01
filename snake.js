@@ -3,6 +3,7 @@ let playButton = document.querySelector(".play-button");
 let context = canvas.getContext("2d");
 let gridSize = 16;
 let frame = 0;
+let canTurn = true;
 
 let snake = {};
 
@@ -214,10 +215,11 @@ function gameLoop() {
     return;
   }
 
-  if (++frame < 4) {
+  if (++frame < 12) {
     return;
   }
 
+  canTurn = true;
   frame = 0;
 
   clearField();
@@ -237,17 +239,29 @@ function startGame() {
 
 document.addEventListener("keydown", function (e) {
   if (e.which === 37 && snake.dx === 0) {
-    snake.dx = -gridSize;
-    snake.dy = 0;
+    if (canTurn) {
+      canTurn = false;
+      snake.dx = -gridSize;
+      snake.dy = 0;
+    }
   } else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -gridSize;
-    snake.dx = 0;
+    if (canTurn) {
+      canTurn = false;
+      snake.dy = -gridSize;
+      snake.dx = 0;
+    }
   } else if (e.which === 39 && snake.dx === 0) {
-    snake.dx = gridSize;
-    snake.dy = 0;
+    if (canTurn) {
+      canTurn = false;
+      snake.dx = gridSize;
+      snake.dy = 0;
+    }
   } else if (e.which === 40 && snake.dy === 0) {
-    snake.dy = gridSize;
-    snake.dx = 0;
+    if (canTurn) {
+      canTurn = false;
+      snake.dy = gridSize;
+      snake.dx = 0;
+    }
   }
 });
 
